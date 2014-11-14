@@ -1,14 +1,14 @@
 //
-//  GolopoDropDownMenu.m
+//  SJDropDownMenu.m
 //  drop down
 //
 //  Created by Sudeep Jaiswal on 13/09/14.
 //  Copyright (c) 2014 Sudeep Jaiswal. All rights reserved.
 //
 
-#import "GolopoDropDownMenu.h"
+#import "SJDropDownMenu.h"
 
-@implementation GolopoDropDownMenu
+@implementation SJDropDownMenu
 
 - (id)initWithFrame:(CGRect)frame
 {
