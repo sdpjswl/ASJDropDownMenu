@@ -106,7 +106,7 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if ([self.delegate respondsToSelector:@selector(golopoMenu:selectedItem:placeID:)]) {
+    if ([self.delegate respondsToSelector:@selector(sjMenu:selectedItem:placeID:)]) {
         
         NSString *itemSelected = [tableData objectAtIndex:indexPath.row];
         NSString *placeID;
@@ -117,7 +117,7 @@
             placeID = nil;
         }
         
-        [self.delegate golopoMenu:self selectedItem:itemSelected placeID:placeID];
+        [self.delegate sjMenu:self selectedItem:itemSelected placeID:placeID];
     }
 }
 
