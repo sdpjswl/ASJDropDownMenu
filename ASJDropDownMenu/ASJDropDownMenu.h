@@ -12,6 +12,12 @@
 
 typedef void (^ASJDropDownMenuCompletionBlock)(ASJDropDownMenu *dropDownMenu, NSString *selectedItem, NSUInteger index);
 
+typedef NS_ENUM(NSUInteger, ASJDropDownMenuScrollIndicatorStyle) {
+  ASJDropDownMenuScrollIndicatorStyleDefault,
+  ASJDropDownMenuScrollIndicatorStyleBlack,
+  ASJDropDownMenuScrollIndicatorStyleWhite
+};
+
 @interface ASJDropDownMenu : UIView
 
 /**
@@ -35,12 +41,17 @@ typedef void (^ASJDropDownMenuCompletionBlock)(ASJDropDownMenu *dropDownMenu, NS
 @property (nonatomic) CGFloat itemHeight;
 
 /**
- *  An array of strings to show in the drop down menu.
+ *  Type of scroll indicator for the scroll view
+ */
+@property (nonatomic) ASJDropDownMenuScrollIndicatorStyle indicatorStyle;
+
+/**
+ *  An array of strings to show in the drop down menu
  */
 @property (copy, nonatomic) NSArray *menuItems;
 
 /**
- *  Set this property if not using the initWithTextField: initializer.
+ *  Set this property if not using the initWithTextField: initializer
  */
 @property (nonatomic) UITextField *textField;
 
@@ -49,19 +60,19 @@ typedef void (^ASJDropDownMenuCompletionBlock)(ASJDropDownMenu *dropDownMenu, NS
  *
  *  @param textField The text field under which to show the drop down.
  *
- *  @return Returns an instance of ASJDropDownMenu.
+ *  @return Returns an instance of ASJDropDownMenu
  */
 - (instancetype)initWithTextField:(UITextField *)textField;
 
 /**
- *  Show the drop down menu under the specified text field.
+ *  Show the drop down menu under the specified text field
  *
- *  @param callback Returns the drop down menu object, the selection and the index at which it belongs in the array.
+ *  @param callback Returns the drop down menu object, the selection and the index at which it belongs in the array
  */
 - (void)showMenuWithCompletion:(ASJDropDownMenuCompletionBlock)callback;
 
 /**
- *  Hides the drop down from the screen.
+ *  Hides the drop down from the screen
  */
 - (void)hideMenu;
 

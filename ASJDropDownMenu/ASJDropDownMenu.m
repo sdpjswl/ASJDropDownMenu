@@ -80,6 +80,7 @@ static NSString *const kCellIdentifier = @"dropDownCell";
   _itemColor = [UIColor whiteColor];
   _itemFont = [UIFont systemFontOfSize:14.0];
   _itemHeight = 40.0;
+  _indicatorStyle = ASJDropDownMenuScrollIndicatorStyleDefault;
 }
 
 - (void)setUI {
@@ -99,6 +100,7 @@ static NSString *const kCellIdentifier = @"dropDownCell";
   menuTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
   menuTableView.backgroundColor = [UIColor clearColor];
   menuTableView.delaysContentTouches = NO;
+  menuTableView.indicatorStyle = (UIScrollViewIndicatorStyle)_indicatorStyle;
   [menuTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellIdentifier];
   [self addSubview:menuTableView];
 }
@@ -158,7 +160,12 @@ static NSString *const kCellIdentifier = @"dropDownCell";
 - (void)reloadTable {
   dispatch_async(dispatch_get_main_queue(), ^{
     [menuTableView reloadData];
-});
+  });
+}
+
+- (void)setIndicatorStyle:(ASJDropDownMenuScrollIndicatorStyle)indicatorStyle {
+  _indicatorStyle = indicatorStyle;
+  menuTableView.indicatorStyle = (UIScrollViewIndicatorStyle)_indicatorStyle;
 }
 
 

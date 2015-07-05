@@ -47,6 +47,7 @@
     dropDown.menuColor = [UIColor colorWithWhite:0.2 alpha:1.0];
     dropDown.itemColor = [UIColor orangeColor];
     dropDown.itemHeight = 50.0;
+    dropDown.indicatorStyle = ASJDropDownMenuScrollIndicatorStyleWhite;
   }
   [dropDown showMenuWithCompletion:^(ASJDropDownMenu *dropDownMenu, NSString *selectedItem, NSUInteger index) {
     myTextField.text = selectedItem;
