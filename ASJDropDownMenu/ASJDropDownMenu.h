@@ -1,6 +1,6 @@
-//  ASJDropDownMenu.h
+// ASJDropDownMenu.h
 //
-// Copyright (c) 2015 Sudeep Jaiswal
+// Copyright (c) 2014 Sudeep Jaiswal
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -72,7 +72,7 @@ typedef NS_ENUM(NSUInteger, ASJDropDownMenuScrollIndicatorStyle) {
 /**
  *  Use the designated initializer to construct a drop down menu
  *
- *  @param textField The text field under which to show the drop down.
+ *  @param textField The text field under which to show the drop down
  *
  *  @return Returns an instance of ASJDropDownMenu
  */
