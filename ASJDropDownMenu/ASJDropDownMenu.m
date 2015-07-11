@@ -187,6 +187,9 @@ static NSString *const kCellIdentifier = @"dropDownCell";
 
 - (void)showMenuWithCompletion:(ASJDropDownMenuCompletionBlock)callback {
   
+  NSString *errorMessage = [NSString stringWithFormat:@"Use the 'initWithTextField:' initialiser or set the 'textField' property before attepting to show the drop down menu."];
+  NSAssert(_textField, errorMessage);
+  
   _callback = callback;
   CGFloat x = _textField.frame.origin.x;
   CGFloat y = _textField.frame.origin.y + _textField.frame.size.height;
