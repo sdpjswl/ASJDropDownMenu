@@ -198,13 +198,17 @@ static NSString *const kCellIdentifier = @"dropDownCell";
   if (_menuItems.count > 5) {
     height = _itemHeight * 5;
   }
-  self.frame = CGRectMake(x, y, width, height);
-  [_textField.superview addSubview:self];
+  dispatch_async(dispatch_get_main_queue(), ^{
+    self.frame = CGRectMake(x, y, width, height);
+    [_textField.superview addSubview:self];
+  });
 }
 
 - (void)hideMenu {
-  [self removeFromSuperview];
-  [menuTableView deselectRowAtIndexPath:menuTableView.indexPathForSelectedRow animated:NO];
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [self removeFromSuperview];
+    [menuTableView deselectRowAtIndexPath:menuTableView.indexPathForSelectedRow animated:NO];
+  });
 }
 
 @end
