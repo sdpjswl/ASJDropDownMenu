@@ -9,9 +9,9 @@ Creating one is simple. The show method has a completion block which returns the
 ASJDropDownMenu *dropDownMenu = [[ASJDropDownMenu alloc] initWithTextField:aTextField];
 dropDownMenu.menuItems = anArrayOfStrings;
 [dropDown showMenuWithCompletion:^(ASJDropDownMenu *dropDownMenu, NSString *selectedItem, NSUInteger index) {
-    myTextField.text = selectedItem;
-    [dropDownMenu hideMenu];
-  }];
+  myTextField.text = selectedItem;
+  [dropDownMenu hideMenu];
+}];
 ```
 
 ![alt tag](Screenshot.png)
