@@ -91,3 +91,12 @@ typedef NS_ENUM(NSUInteger, ASJDropDownMenuScrollIndicatorStyle) {
 - (void)hideMenu;
 
 @end
+
+@interface ASJDropDownMenuItem : NSObject
+
+@property (copy, nonatomic) NSString *title;
+@property (copy, nonatomic) NSString *subtitle;
+
++ (ASJDropDownMenuItem *)itemWithTitle:(NSString *)title subtitle:(NSString *)subtitle;
+
+@end

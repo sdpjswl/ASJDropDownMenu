@@ -115,7 +115,7 @@ static NSString *const kCellIdentifier = @"dropDownCell";
   menuTableView.backgroundColor = [UIColor clearColor];
   menuTableView.delaysContentTouches = NO;
   menuTableView.indicatorStyle = (UIScrollViewIndicatorStyle)_indicatorStyle;
-  [menuTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellIdentifier];
+  menuTableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
   [self addSubview:menuTableView];
 }
 
@@ -127,11 +127,18 @@ static NSString *const kCellIdentifier = @"dropDownCell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier forIndexPath:indexPath];
+  
+  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
+  
+  if (!cell) {
+    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIdentifier];
+  }
+  
   cell.textLabel.textColor = _itemColor;
   cell.textLabel.font = _itemFont;
   cell.backgroundColor = [UIColor clearColor];
-  cell.textLabel.text = _menuItems[indexPath.row];
+  cell.textLabel.text = _menuItems[indexPath.row][@"name"];
+  cell.detailTextLabel.text =_menuItems[indexPath.row][@"Phone"];
   return cell;
 }
 
@@ -168,6 +175,19 @@ static NSString *const kCellIdentifier = @"dropDownCell";
 
 - (void)setItemHeight:(CGFloat)itemHeight {
   _itemHeight = itemHeight;
+  [self reloadTable];
+}
+
+- (void)setMenuItems:(NSArray *)menuItems
+{
+  for (id imageItem in menuItems)
+  {
+    BOOL success = [imageItem isMemberOfClass:[ASJDropDownMenuItem class]];
+    if (!success) {
+      NSAssert(success, @"Items must be of kind ASJDropDownMenuItem");
+    }
+  }
+  _menuItems = menuItems;
   [self reloadTable];
 }
 
@@ -209,6 +229,18 @@ static NSString *const kCellIdentifier = @"dropDownCell";
     [self removeFromSuperview];
     [menuTableView deselectRowAtIndexPath:menuTableView.indexPathForSelectedRow animated:NO];
   });
+}
+
+@end
+
+@implementation ASJDropDownMenuItem
+
++ (ASJDropDownMenuItem *)itemWithTitle:(NSString *)title subtitle:(NSString *)subtitle
+{
+  ASJDropDownMenuItem *item = [[ASJDropDownMenuItem alloc] init];
+  item.title = title;
+  item.subtitle = subtitle;
+  return item;
 }
 
 @end
