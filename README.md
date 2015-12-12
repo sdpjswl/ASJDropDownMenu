@@ -19,6 +19,9 @@ dropDownMenu.menuItems = anArrayOfStrings;
 ###To-do
 - Animation to open and close
 - Provision to add images
+- Provision to close on item selection
+- Option to open the drop down in up or down direction
+- Move the screen to accomodate the drawer when keyboard shows
 
 # License
 
