@@ -43,16 +43,25 @@
 - (void)textFieldChanged:(UITextField *)sender {
   if (!dropDown) {
     dropDown = [[ASJDropDownMenu alloc] initWithTextField:myTextField];
-    dropDown.menuItems = self.menuItems;
     dropDown.menuColor = [UIColor colorWithWhite:0.2 alpha:1.0];
     dropDown.itemColor = [UIColor orangeColor];
     dropDown.itemHeight = 50.0;
     dropDown.indicatorStyle = ASJDropDownMenuScrollIndicatorStyleWhite;
+    
+    NSMutableArray *temp = [[NSMutableArray alloc] init];
+    for (NSString *item in self.menuItems)
+    {
+      NSInteger idx = [self.menuItems indexOfObject:item];
+      ASJDropDownMenuItem *menuItem = [ASJDropDownMenuItem itemWithTitle:self.menuItems[idx] subtitle:@"Radiohead - In Rainbows (2007)"];
+      [temp addObject:menuItem];
+    }
+    dropDown.menuItems = [NSArray arrayWithArray:temp];
   }
-  [dropDown showMenuWithCompletion:^(ASJDropDownMenu *dropDownMenu, NSString *selectedItem, NSUInteger index) {
-    myTextField.text = selectedItem;
-    [dropDownMenu hideMenu];
-  }];
+  [dropDown showMenuWithCompletion:^(ASJDropDownMenu *dropDownMenu, ASJDropDownMenuItem *menuItem, NSUInteger index)
+   {
+     myTextField.text = menuItem.title;
+     [dropDownMenu hideMenu];
+   }];
 }
 
 - (NSArray *)menuItems {

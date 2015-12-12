@@ -23,8 +23,9 @@
 @import UIKit;
 
 @class ASJDropDownMenu;
+@class ASJDropDownMenuItem;
 
-typedef void (^ASJDropDownMenuCompletionBlock)(ASJDropDownMenu *dropDownMenu, NSString *selectedItem, NSUInteger index);
+typedef void (^ASJDropDownMenuCompletionBlock)(ASJDropDownMenu *dropDownMenu, ASJDropDownMenuItem *menuItem, NSUInteger index);
 
 typedef NS_ENUM(NSUInteger, ASJDropDownMenuScrollIndicatorStyle) {
   ASJDropDownMenuScrollIndicatorStyleDefault,
@@ -97,6 +98,7 @@ typedef NS_ENUM(NSUInteger, ASJDropDownMenuScrollIndicatorStyle) {
 @property (copy, nonatomic) NSString *title;
 @property (copy, nonatomic) NSString *subtitle;
 
++ (ASJDropDownMenuItem *)itemWithTitle:(NSString *)title;
 + (ASJDropDownMenuItem *)itemWithTitle:(NSString *)title subtitle:(NSString *)subtitle;
 
 @end

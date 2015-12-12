@@ -26,6 +26,7 @@ static NSString *const kCellIdentifier = @"dropDownCell";
 
 @interface ASJDropDownMenu () <UITableViewDataSource, UITableViewDelegate> {
   UITableView *menuTableView;
+  BOOL usesSubtitle;
 }
 
 @property (copy) ASJDropDownMenuCompletionBlock callback;
@@ -113,7 +114,6 @@ static NSString *const kCellIdentifier = @"dropDownCell";
   menuTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
   menuTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
   menuTableView.backgroundColor = [UIColor clearColor];
-  menuTableView.delaysContentTouches = NO;
   menuTableView.indicatorStyle = (UIScrollViewIndicatorStyle)_indicatorStyle;
   menuTableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
   [self addSubview:menuTableView];
@@ -129,16 +129,24 @@ static NSString *const kCellIdentifier = @"dropDownCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
-  
-  if (!cell) {
-    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIdentifier];
+  if (!cell)
+  {
+    UITableViewCellStyle style = usesSubtitle ? UITableViewCellStyleSubtitle : UITableViewCellStyleDefault;
+    cell = [[UITableViewCell alloc] initWithStyle:style reuseIdentifier:kCellIdentifier];
   }
   
   cell.textLabel.textColor = _itemColor;
   cell.textLabel.font = _itemFont;
   cell.backgroundColor = [UIColor clearColor];
-  cell.textLabel.text = _menuItems[indexPath.row][@"name"];
-  cell.detailTextLabel.text =_menuItems[indexPath.row][@"Phone"];
+  
+  ASJDropDownMenuItem *item = _menuItems[indexPath.row];
+  cell.textLabel.text = item.title;
+  if (usesSubtitle)
+  {
+    cell.detailTextLabel.text = item.subtitle;
+    cell.detailTextLabel.textColor = _itemColor;
+  }
+  
   return cell;
 }
 
@@ -180,11 +188,16 @@ static NSString *const kCellIdentifier = @"dropDownCell";
 
 - (void)setMenuItems:(NSArray *)menuItems
 {
-  for (id imageItem in menuItems)
+  for (id menuItem in menuItems)
   {
-    BOOL success = [imageItem isMemberOfClass:[ASJDropDownMenuItem class]];
+    BOOL success = [menuItem isMemberOfClass:[ASJDropDownMenuItem class]];
     if (!success) {
       NSAssert(success, @"Items must be of kind ASJDropDownMenuItem");
+    }
+    ASJDropDownMenuItem *temp = (ASJDropDownMenuItem *)menuItem;
+    if (temp.subtitle)
+    {
+      usesSubtitle = YES;
     }
   }
   _menuItems = menuItems;
@@ -207,7 +220,7 @@ static NSString *const kCellIdentifier = @"dropDownCell";
 
 - (void)showMenuWithCompletion:(ASJDropDownMenuCompletionBlock)callback {
   
-  NSString *errorMessage = [NSString stringWithFormat:@"Use the 'initWithTextField:' initialiser or set the 'textField' property before attepting to show the drop down menu."];
+  NSString *errorMessage = [NSString stringWithFormat:@"'textField' cannot be nil. Use the designated initialiser 'initWithTextField:' or set the 'textField' property before attepting to show the drop down menu."];
   NSAssert(_textField, errorMessage);
   
   _callback = callback;
@@ -234,6 +247,13 @@ static NSString *const kCellIdentifier = @"dropDownCell";
 @end
 
 @implementation ASJDropDownMenuItem
+
++ (ASJDropDownMenuItem *)itemWithTitle:(NSString *)title
+{
+  ASJDropDownMenuItem *item = [[ASJDropDownMenuItem alloc] init];
+  item.title = title;
+  return item;
+}
 
 + (ASJDropDownMenuItem *)itemWithTitle:(NSString *)title subtitle:(NSString *)subtitle
 {
