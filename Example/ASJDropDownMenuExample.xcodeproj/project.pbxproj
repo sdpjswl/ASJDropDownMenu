@@ -14,18 +14,7 @@
 		C0DE4D9F1B458BB8001B1746 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0DE4D9D1B458BB8001B1746 /* Main.storyboard */; };
 		C0DE4DA11B458BB8001B1746 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0DE4DA01B458BB8001B1746 /* Images.xcassets */; };
 		C0DE4DA41B458BB8001B1746 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0DE4DA21B458BB8001B1746 /* LaunchScreen.xib */; };
-		C0DE4DB01B458BB8001B1746 /* ASJDropDownMenuExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C0DE4DAF1B458BB8001B1746 /* ASJDropDownMenuExampleTests.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		C0DE4DAA1B458BB8001B1746 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C0DE4D881B458BB8001B1746 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C0DE4D8F1B458BB8001B1746;
-			remoteInfo = ASJDropDownMenuExample;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		C083590E1B484E6F0059EBD3 /* ASJDropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASJDropDownMenu.h; sourceTree = "<group>"; };
@@ -40,20 +29,10 @@
 		C0DE4D9E1B458BB8001B1746 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C0DE4DA01B458BB8001B1746 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C0DE4DA31B458BB8001B1746 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		C0DE4DA91B458BB8001B1746 /* ASJDropDownMenuExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ASJDropDownMenuExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C0DE4DAE1B458BB8001B1746 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C0DE4DAF1B458BB8001B1746 /* ASJDropDownMenuExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASJDropDownMenuExampleTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		C0DE4D8D1B458BB8001B1746 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C0DE4DA61B458BB8001B1746 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -77,7 +56,6 @@
 			isa = PBXGroup;
 			children = (
 				C0DE4D921B458BB8001B1746 /* ASJDropDownMenuExample */,
-				C0DE4DAC1B458BB8001B1746 /* ASJDropDownMenuExampleTests */,
 				C0DE4D911B458BB8001B1746 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -86,7 +64,6 @@
 			isa = PBXGroup;
 			children = (
 				C0DE4D901B458BB8001B1746 /* ASJDropDownMenuExample.app */,
-				C0DE4DA91B458BB8001B1746 /* ASJDropDownMenuExampleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -116,23 +93,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		C0DE4DAC1B458BB8001B1746 /* ASJDropDownMenuExampleTests */ = {
-			isa = PBXGroup;
-			children = (
-				C0DE4DAF1B458BB8001B1746 /* ASJDropDownMenuExampleTests.m */,
-				C0DE4DAD1B458BB8001B1746 /* Supporting Files */,
-			);
-			path = ASJDropDownMenuExampleTests;
-			sourceTree = "<group>";
-		};
-		C0DE4DAD1B458BB8001B1746 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C0DE4DAE1B458BB8001B1746 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -153,39 +113,17 @@
 			productReference = C0DE4D901B458BB8001B1746 /* ASJDropDownMenuExample.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C0DE4DA81B458BB8001B1746 /* ASJDropDownMenuExampleTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C0DE4DB61B458BB8001B1746 /* Build configuration list for PBXNativeTarget "ASJDropDownMenuExampleTests" */;
-			buildPhases = (
-				C0DE4DA51B458BB8001B1746 /* Sources */,
-				C0DE4DA61B458BB8001B1746 /* Frameworks */,
-				C0DE4DA71B458BB8001B1746 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C0DE4DAB1B458BB8001B1746 /* PBXTargetDependency */,
-			);
-			name = ASJDropDownMenuExampleTests;
-			productName = ASJDropDownMenuExampleTests;
-			productReference = C0DE4DA91B458BB8001B1746 /* ASJDropDownMenuExampleTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		C0DE4D881B458BB8001B1746 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Sudeep Jaiswal";
 				TargetAttributes = {
 					C0DE4D8F1B458BB8001B1746 = {
 						CreatedOnToolsVersion = 6.3.2;
-					};
-					C0DE4DA81B458BB8001B1746 = {
-						CreatedOnToolsVersion = 6.3.2;
-						TestTargetID = C0DE4D8F1B458BB8001B1746;
 					};
 				};
 			};
@@ -203,7 +141,6 @@
 			projectRoot = "";
 			targets = (
 				C0DE4D8F1B458BB8001B1746 /* ASJDropDownMenuExample */,
-				C0DE4DA81B458BB8001B1746 /* ASJDropDownMenuExampleTests */,
 			);
 		};
 /* End PBXProject section */
@@ -216,13 +153,6 @@
 				C0DE4D9F1B458BB8001B1746 /* Main.storyboard in Resources */,
 				C0DE4DA41B458BB8001B1746 /* LaunchScreen.xib in Resources */,
 				C0DE4DA11B458BB8001B1746 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C0DE4DA71B458BB8001B1746 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,23 +170,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C0DE4DA51B458BB8001B1746 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C0DE4DB01B458BB8001B1746 /* ASJDropDownMenuExampleTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		C0DE4DAB1B458BB8001B1746 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C0DE4D8F1B458BB8001B1746 /* ASJDropDownMenuExample */;
-			targetProxy = C0DE4DAA1B458BB8001B1746 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C0DE4D9D1B458BB8001B1746 /* Main.storyboard */ = {
@@ -299,6 +213,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -365,6 +280,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = ASJDropDownMenuExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sudeep.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -376,41 +292,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = ASJDropDownMenuExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sudeep.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		C0DE4DB71B458BB8001B1746 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = ASJDropDownMenuExampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ASJDropDownMenuExample.app/ASJDropDownMenuExample";
-			};
-			name = Debug;
-		};
-		C0DE4DB81B458BB8001B1746 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = ASJDropDownMenuExampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ASJDropDownMenuExample.app/ASJDropDownMenuExample";
 			};
 			name = Release;
 		};
@@ -431,15 +314,6 @@
 			buildConfigurations = (
 				C0DE4DB41B458BB8001B1746 /* Debug */,
 				C0DE4DB51B458BB8001B1746 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C0DE4DB61B458BB8001B1746 /* Build configuration list for PBXNativeTarget "ASJDropDownMenuExampleTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C0DE4DB71B458BB8001B1746 /* Debug */,
-				C0DE4DB81B458BB8001B1746 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
