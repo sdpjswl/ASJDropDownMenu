@@ -7,11 +7,21 @@ Creating one is simple. The show method has a completion block which returns the
 
 ```objc
 ASJDropDownMenu *dropDownMenu = [[ASJDropDownMenu alloc] initWithTextField:aTextField];
-dropDownMenu.menuItems = anArrayOfStrings;
-[dropDown showMenuWithCompletion:^(ASJDropDownMenu *dropDownMenu, NSString *selectedItem, NSUInteger index) {
-  myTextField.text = selectedItem;
+dropDownMenu.menuItems = anArrayOfASJDropDownMenuItems;
+[dropDown showMenuWithCompletion:^(ASJDropDownMenu *dropDownMenu, ASJDropDownMenuItem *menuItem, NSUInteger index) {
   [dropDownMenu hideMenu];
 }];
+```
+The menu items need to be on type ASJDropDownMenuItems. Constructor methods are provided to generate them. Just attach an array of these to your drop down menu instance.
+
+```objc
+ASJDropDownMenuItem *itemWithTitle = [ASJDropDownMenuItem itemWithTitle:@"a title"];
+anInstanceOfDropDownMenu.menuItems = @[itemWithTitle, anotherItemWithTitle];
+```
+
+```objc
+ASJDropDownMenuItem *itemWithSubtitle = [ASJDropDownMenuItem itemWithTitle:@"a title" subtitle:@"a subtitle"];
+anInstanceOfDropDownMenu.menuItems = @[itemWithSubtitle, anotherItemWithSubitle];
 ```
 
 ![alt tag](Screenshot.png)
