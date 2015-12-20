@@ -1,7 +1,14 @@
-ASJDropDownMenu
-================
+# ASJDropDownMenu
 
 iOS doesn't have a drop down menu by default. Developers are supposed to use the ```UIPickerView``` for similar functionality. Project design constraints may sometimes however necessitate the use of such a menu. This class is a subclass of `UIView` that has a `UITableView` embedded in it. It provides the functionality needed to show a drop down menu below a `UITextField` and is customisable using various properties.
+
+# Installation
+
+Cocoapods is the preferred way to install this library. Add this command to your `Podfile`:
+
+```
+pod 'ASJDropDownMenu'
+```
 
 Creating one is simple. The show method has a completion block which returns the selected item. You may hide the drop down there and then:
 
