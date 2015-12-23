@@ -10,6 +10,8 @@ Cocoapods is the preferred way to install this library. Add this command to your
 pod 'ASJDropDownMenu'
 ```
 
+# Usage
+
 Creating one is simple. The show method has a completion block which returns the selected item. You may hide the drop down there and then:
 
 ```objc
