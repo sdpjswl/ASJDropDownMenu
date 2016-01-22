@@ -29,6 +29,7 @@ static NSString *const kCellIdentifier = @"dropDownCell";
   BOOL usesSubtitle;
 }
 
+@property (weak, nonatomic) UIView *view;
 @property (copy) ASJDropDownMenuCompletionBlock callback;
 
 - (void)setUp;
@@ -44,11 +45,11 @@ static NSString *const kCellIdentifier = @"dropDownCell";
 
 #pragma mark - Init methods
 
-- (instancetype)initWithTextField:(UITextField *)textField
+- (instancetype)initWithView:(id)view
 {
   self = [super init];
   if (self) {
-    _textField = textField;
+    _view = view;
     [self setUp];
   }
   return self;
@@ -221,21 +222,21 @@ static NSString *const kCellIdentifier = @"dropDownCell";
 - (void)showMenuWithCompletion:(ASJDropDownMenuCompletionBlock)callback {
   
 #if DEBUG
-  NSString *errorMessage = [NSString stringWithFormat:@"'textField' cannot be nil. Use the designated initialiser 'initWithTextField:' or set the 'textField' property before attepting to show the drop down menu."];
-  NSAssert(_textField, errorMessage);
+  NSString *errorMessage = [NSString stringWithFormat:@"'view' cannot be nil. Use the designated initialiser 'initWithView:' or set the 'textField' property before attepting to show the drop down menu."];
+  NSAssert(_view, errorMessage);
 #endif
   
   _callback = callback;
-  CGFloat x = _textField.frame.origin.x;
-  CGFloat y = _textField.frame.origin.y + _textField.frame.size.height;
-  CGFloat width = _textField.frame.size.width;
+  CGFloat x = _view.frame.origin.x;
+  CGFloat y = _view.frame.origin.y + _view.frame.size.height;
+  CGFloat width = _view.frame.size.width;
   CGFloat height = _itemHeight * _menuItems.count;
   if (_menuItems.count > 5) {
     height = _itemHeight * 5;
   }
   dispatch_async(dispatch_get_main_queue(), ^{
     self.frame = CGRectMake(x, y, width, height);
-    [_textField.superview addSubview:self];
+    [_view.superview addSubview:self];
   });
 }
 

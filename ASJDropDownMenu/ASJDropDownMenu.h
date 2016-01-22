@@ -66,18 +66,13 @@ typedef NS_ENUM(NSUInteger, ASJDropDownMenuScrollIndicatorStyle) {
 @property (copy, nonatomic) NSArray *menuItems;
 
 /**
- *  Set this property if not using the initWithTextField: initializer
- */
-@property (nonatomic) UITextField *textField;
-
-/**
  *  Use the designated initializer to construct a drop down menu
  *
- *  @param textField The text field under which to show the drop down
+ *  @param view The view under which to show the drop down
  *
  *  @return Returns an instance of ASJDropDownMenu
  */
-- (instancetype)initWithTextField:(UITextField *)textField;
+- (instancetype)initWithView:(id)view;
 
 /**
  *  Show the drop down menu under the specified text field

@@ -42,7 +42,7 @@
 
 - (void)textFieldChanged:(UITextField *)sender {
   if (!dropDown) {
-    dropDown = [[ASJDropDownMenu alloc] initWithTextField:myTextField];
+    dropDown = [[ASJDropDownMenu alloc] initWithView:myTextField];
     dropDown.menuColor = [UIColor colorWithWhite:0.2 alpha:1.0];
     dropDown.itemColor = [UIColor orangeColor];
     dropDown.itemHeight = 50.0;
