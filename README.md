@@ -4,7 +4,7 @@ iOS doesn't have a drop down menu by default. Developers are supposed to use the
 
 # Installation
 
-Cocoapods is the preferred way to install this library. Add this command to your `Podfile`:
+CocoaPods is the preferred way to install this library. Add this command to your `Podfile`:
 
 ```
 pod 'ASJDropDownMenu'
