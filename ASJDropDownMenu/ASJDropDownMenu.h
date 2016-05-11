@@ -25,6 +25,8 @@
 @class ASJDropDownMenu;
 @class ASJDropDownMenuItem;
 
+NS_ASSUME_NONNULL_BEGIN
+
 typedef void (^ASJDropDownMenuCompletionBlock)(ASJDropDownMenu *dropDownMenu, ASJDropDownMenuItem *menuItem, NSUInteger index);
 
 typedef NS_ENUM(NSUInteger, ASJDropDownMenuScrollIndicatorStyle) {
@@ -38,32 +40,32 @@ typedef NS_ENUM(NSUInteger, ASJDropDownMenuScrollIndicatorStyle) {
 /**
  *  Background color of the drop down menu
  */
-@property (nonatomic) UIColor *menuColor;
+@property (nullable, strong, nonatomic) UIColor *menuColor;
 
 /**
  *  Text color of the menu items
  */
-@property (nonatomic) UIColor *itemColor;
+@property (nullable, strong, nonatomic) UIColor *itemColor;
 
 /**
  *  Font of the menu items
  */
-@property (nonatomic) UIFont *itemFont;
+@property (nullable, strong, nonatomic) UIFont *itemFont;
 
 /**
  *  Height of individual menu items
  */
-@property (nonatomic) CGFloat itemHeight;
+@property (assign, nonatomic) CGFloat itemHeight;
 
 /**
  *  Type of scroll indicator for the scroll view
  */
-@property (nonatomic) ASJDropDownMenuScrollIndicatorStyle indicatorStyle;
+@property (assign, nonatomic) ASJDropDownMenuScrollIndicatorStyle indicatorStyle;
 
 /**
  *  An array of strings to show in the drop down menu
  */
-@property (copy, nonatomic) NSArray *menuItems;
+@property (copy, nonatomic) NSArray<ASJDropDownMenuItem *> *menuItems;
 
 /**
  *  Use the designated initializer to construct a drop down menu
@@ -72,14 +74,14 @@ typedef NS_ENUM(NSUInteger, ASJDropDownMenuScrollIndicatorStyle) {
  *
  *  @return Returns an instance of ASJDropDownMenu
  */
-- (instancetype)initWithView:(id)view;
+- (instancetype)initWithView:(__kindof UIView *)view NS_DESIGNATED_INITIALIZER;
 
 /**
  *  Show the drop down menu under the specified text field
  *
  *  @param callback Returns the drop down menu object, the selection and the index at which it belongs in the array
  */
-- (void)showMenuWithCompletion:(ASJDropDownMenuCompletionBlock)callback;
+- (void)showMenuWithCompletion:(nullable ASJDropDownMenuCompletionBlock)callback;
 
 /**
  *  Hides the drop down from the screen
@@ -90,10 +92,26 @@ typedef NS_ENUM(NSUInteger, ASJDropDownMenuScrollIndicatorStyle) {
 
 @interface ASJDropDownMenuItem : NSObject
 
+/**
+ *  Main text of the menu item.
+ */
 @property (copy, nonatomic) NSString *title;
-@property (copy, nonatomic) NSString *subtitle;
 
+/**
+ *  Accompanying text below the main text. Optional.
+ */
+@property (nullable, copy, nonatomic) NSString *subtitle;
+
+/**
+ *  Convenience constructors. Will only show the main text.
+ */
 + (ASJDropDownMenuItem *)itemWithTitle:(NSString *)title;
-+ (ASJDropDownMenuItem *)itemWithTitle:(NSString *)title subtitle:(NSString *)subtitle;
+
+/**
+ *  Convenience constructor. 'subtitle' can be nil.
+ */
++ (ASJDropDownMenuItem *)itemWithTitle:(NSString *)title subtitle:(nullable NSString *)subtitle;
 
 @end
+
+NS_ASSUME_NONNULL_END

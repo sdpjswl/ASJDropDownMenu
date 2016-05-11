@@ -22,19 +22,15 @@
 
 #import "ASJDropDownMenu.h"
 
-static NSString *const kCellIdentifier = @"dropDownCell";
+@interface ASJDropDownMenu () <UITableViewDataSource, UITableViewDelegate>
 
-@interface ASJDropDownMenu () <UITableViewDataSource, UITableViewDelegate> {
-  UITableView *menuTableView;
-  BOOL usesSubtitle;
-}
-
-@property (weak, nonatomic) UIView *view;
+@property (weak, nonatomic) UIView *targetView;
+@property (strong, nonatomic) UITableView *menuTableView;
 @property (copy) ASJDropDownMenuCompletionBlock callback;
 
-- (void)setUp;
-- (void)setDefaults;
-- (void)setUI;
+- (void)setup;
+- (void)setupDefaults;
+- (void)setupUI;
 - (void)addTable;
 - (void)reloadTable;
 
@@ -42,107 +38,98 @@ static NSString *const kCellIdentifier = @"dropDownCell";
 
 @implementation ASJDropDownMenu
 
-
 #pragma mark - Init methods
 
-- (instancetype)initWithView:(id)view
+- (instancetype)initWithView:(__kindof UIView *)view
 {
-  self = [super init];
+  NSAssert(view, @"View must not be nil.");
+  self = [super initWithFrame:CGRectZero];
   if (self) {
-    _view = view;
-    [self setUp];
-  }
-  return self;
-}
-
-- (instancetype)init
-{
-  self = [super init];
-  if (self) {
-    [self setUp];
+    _targetView = view;
+    [self setup];
   }
   return self;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
-  self = [super initWithCoder:coder];
-  if (self) {
-    [self setUp];
-  }
-  return self;
+  return [self initWithView:_targetView];
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
-  self = [super initWithFrame:frame];
-  if (self) {
-    [self setUp];
-  }
-  return self;
+  return [self initWithView:_targetView];
 }
 
+#pragma mark - Setup
 
-#pragma mark - Set up
-
-- (void)setUp {
-  [self setDefaults];
-  [self setUI];
+- (void)setup
+{
+  [self setupDefaults];
+  [self setupUI];
   [self addTable];
 }
 
-- (void)setDefaults {
+- (void)setupDefaults
+{
   _menuColor = [[UIColor clearColor] colorWithAlphaComponent:0.8];
   _itemColor = [UIColor whiteColor];
-  _itemFont = [UIFont systemFontOfSize:14.0];
-  _itemHeight = 40.0;
+  _itemFont = [UIFont systemFontOfSize:14.0f];
+  _itemHeight = 40.0f;
   _indicatorStyle = ASJDropDownMenuScrollIndicatorStyleDefault;
 }
 
-- (void)setUI {
+- (void)setupUI
+{
   self.clipsToBounds = YES;
-  self.layer.cornerRadius = 3.0;
+  self.layer.cornerRadius = 3.0f;
   self.backgroundColor = _menuColor;
 }
 
-- (void)addTable {
-  if (menuTableView) {
+- (void)addTable
+{
+  if (_menuTableView) {
     return;
   }
-  menuTableView = [[UITableView alloc] initWithFrame:self.bounds style:UITableViewStylePlain];
-  menuTableView.dataSource = self;
-  menuTableView.delegate = self;
-  menuTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-  menuTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-  menuTableView.backgroundColor = [UIColor clearColor];
-  menuTableView.indicatorStyle = (UIScrollViewIndicatorStyle)_indicatorStyle;
-  menuTableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
-  [self addSubview:menuTableView];
+  _menuTableView = [[UITableView alloc] initWithFrame:self.bounds style:UITableViewStylePlain];
+  _menuTableView.dataSource = self;
+  _menuTableView.delegate = self;
+  _menuTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+  _menuTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+  _menuTableView.backgroundColor = [UIColor clearColor];
+  _menuTableView.indicatorStyle = (UIScrollViewIndicatorStyle)_indicatorStyle;
+  _menuTableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+  [self addSubview:_menuTableView];
 }
-
 
 #pragma mark - UITableViewDataSource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
   return _menuItems.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  
+static NSString *const kCellIdentifier = @"ASJDropDownCellIdentifier";
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
+  
+  ASJDropDownMenuItem *item = _menuItems[indexPath.row];
+  BOOL hasSubtitle = item.subtitle.length ? YES : NO;
+  
   if (!cell)
   {
-    UITableViewCellStyle style = usesSubtitle ? UITableViewCellStyleSubtitle : UITableViewCellStyleDefault;
+    UITableViewCellStyle style = hasSubtitle ? UITableViewCellStyleSubtitle : UITableViewCellStyleDefault;
     cell = [[UITableViewCell alloc] initWithStyle:style reuseIdentifier:kCellIdentifier];
   }
   
   cell.textLabel.textColor = _itemColor;
   cell.textLabel.font = _itemFont;
   cell.backgroundColor = [UIColor clearColor];
-  
-  ASJDropDownMenuItem *item = _menuItems[indexPath.row];
   cell.textLabel.text = item.title;
-  if (usesSubtitle)
+  
+  if (hasSubtitle)
   {
     cell.detailTextLabel.text = item.subtitle;
     cell.detailTextLabel.textColor = _itemColor;
@@ -151,103 +138,96 @@ static NSString *const kCellIdentifier = @"dropDownCell";
   return cell;
 }
 
-
 #pragma mark - UITableViewDelegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
   if (_callback) {
     _callback(self, _menuItems[indexPath.row], indexPath.row);
   }
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
   return _itemHeight;
 }
 
-
 #pragma mark - Property setters
 
-- (void)setMenuColor:(UIColor *)menuColor {
+- (void)setMenuColor:(UIColor *)menuColor
+{
   _menuColor = menuColor;
   self.backgroundColor = _menuColor;
 }
 
-- (void)setItemColor:(UIColor *)itemColor {
+- (void)setItemColor:(UIColor *)itemColor
+{
   _itemColor = itemColor;
   [self reloadTable];
 }
 
-- (void)setItemFont:(UIFont *)itemFont {
+- (void)setItemFont:(UIFont *)itemFont
+{
   _itemFont = itemFont;
   [self reloadTable];
 }
 
-- (void)setItemHeight:(CGFloat)itemHeight {
+- (void)setItemHeight:(CGFloat)itemHeight
+{
   _itemHeight = itemHeight;
   [self reloadTable];
 }
 
 - (void)setMenuItems:(NSArray *)menuItems
 {
-  for (id menuItem in menuItems)
+  NSAssert(menuItems.count, @"You must provide at least one ASJDropDownMenuItem.");
+  
+  for (id object in menuItems)
   {
-    BOOL success = [menuItem isMemberOfClass:[ASJDropDownMenuItem class]];
-    if (!success) {
-      NSAssert(success, @"Items must be of kind ASJDropDownMenuItem");
-    }
-    ASJDropDownMenuItem *temp = (ASJDropDownMenuItem *)menuItem;
-    if (temp.subtitle)
-    {
-      usesSubtitle = YES;
-    }
+    BOOL success = [object isMemberOfClass:[ASJDropDownMenuItem class]];
+    NSAssert(success, @"Items must be of kind ASJDropDownMenuItem");
   }
   _menuItems = menuItems;
   [self reloadTable];
 }
 
-- (void)reloadTable {
-  dispatch_async(dispatch_get_main_queue(), ^{
-    [menuTableView reloadData];
-  });
+- (void)reloadTable
+{
+  [_menuTableView reloadData];
 }
 
-- (void)setIndicatorStyle:(ASJDropDownMenuScrollIndicatorStyle)indicatorStyle {
+- (void)setIndicatorStyle:(ASJDropDownMenuScrollIndicatorStyle)indicatorStyle
+{
   _indicatorStyle = indicatorStyle;
-  menuTableView.indicatorStyle = (UIScrollViewIndicatorStyle)_indicatorStyle;
+  _menuTableView.indicatorStyle = (UIScrollViewIndicatorStyle)_indicatorStyle;
 }
-
 
 #pragma mark - Show-hide
 
-- (void)showMenuWithCompletion:(ASJDropDownMenuCompletionBlock)callback {
-  
-#if DEBUG
-  NSString *errorMessage = [NSString stringWithFormat:@"'view' cannot be nil. Use the designated initialiser 'initWithView:' or set the 'textField' property before attepting to show the drop down menu."];
-  NSAssert(_view, errorMessage);
-#endif
-  
+- (void)showMenuWithCompletion:(ASJDropDownMenuCompletionBlock)callback
+{
   _callback = callback;
-  CGFloat x = _view.frame.origin.x;
-  CGFloat y = _view.frame.origin.y + _view.frame.size.height;
-  CGFloat width = _view.frame.size.width;
+  CGFloat x = _targetView.frame.origin.x;
+  CGFloat y = _targetView.frame.origin.y + _targetView.frame.size.height;
+  CGFloat width = _targetView.frame.size.width;
   CGFloat height = _itemHeight * _menuItems.count;
   if (_menuItems.count > 5) {
     height = _itemHeight * 5;
   }
-  dispatch_async(dispatch_get_main_queue(), ^{
-    self.frame = CGRectMake(x, y, width, height);
-    [_view.superview addSubview:self];
-  });
+  
+  self.frame = CGRectMake(x, y, width, height);
+  [_targetView.superview addSubview:self];
 }
 
-- (void)hideMenu {
-  dispatch_async(dispatch_get_main_queue(), ^{
-    [self removeFromSuperview];
-    [menuTableView deselectRowAtIndexPath:menuTableView.indexPathForSelectedRow animated:NO];
-  });
+- (void)hideMenu
+{
+  [self removeFromSuperview];
+  [_menuTableView deselectRowAtIndexPath:_menuTableView.indexPathForSelectedRow animated:NO];
 }
 
 @end
+
+#pragma mark - ASJDropDownMenuItem
 
 @implementation ASJDropDownMenuItem
 

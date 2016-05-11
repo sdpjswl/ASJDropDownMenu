@@ -9,23 +9,23 @@
 #import "ViewController.h"
 #import "ASJDropDownMenu.h"
 
-@interface ViewController () {
-  IBOutlet UITextField *myTextField;
-  ASJDropDownMenu *dropDown;
-}
+@interface ViewController ()
 
-@property (readonly, nonatomic) NSArray *menuItems;
+@property (weak, nonatomic) IBOutlet UITextField *myTextField;
+@property (strong, nonatomic) ASJDropDownMenu *dropDown;
+@property (readonly, copy, nonatomic) NSArray *menuItems;
 
-- (void)setUp;
+- (void)setup;
 
 @end
 
 @implementation ViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
   [super viewDidLoad];
   // Do any additional setup after loading the view, typically from a nib.
-  [self setUp];
+  [self setup];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,19 +34,22 @@
 }
 
 
-#pragma mark - Set up
+#pragma mark - Setup
 
-- (void)setUp {
-  [myTextField addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventEditingChanged];
+- (void)setup
+{
+  [_myTextField addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventEditingChanged];
 }
 
-- (void)textFieldChanged:(UITextField *)sender {
-  if (!dropDown) {
-    dropDown = [[ASJDropDownMenu alloc] initWithView:myTextField];
-    dropDown.menuColor = [UIColor colorWithWhite:0.2 alpha:1.0];
-    dropDown.itemColor = [UIColor orangeColor];
-    dropDown.itemHeight = 50.0;
-    dropDown.indicatorStyle = ASJDropDownMenuScrollIndicatorStyleWhite;
+- (void)textFieldChanged:(UITextField *)sender
+{
+  if (!_dropDown)
+  {
+    _dropDown = [[ASJDropDownMenu alloc] initWithView:_myTextField];
+    _dropDown.menuColor = [UIColor colorWithWhite:0.2f alpha:1.0f];
+    _dropDown.itemColor = [UIColor orangeColor];
+    _dropDown.itemHeight = 50.0f;
+    _dropDown.indicatorStyle = ASJDropDownMenuScrollIndicatorStyleWhite;
     
     NSMutableArray *temp = [[NSMutableArray alloc] init];
     for (NSString *item in self.menuItems)
@@ -55,16 +58,18 @@
       ASJDropDownMenuItem *menuItem = [ASJDropDownMenuItem itemWithTitle:self.menuItems[idx] subtitle:@"Radiohead - In Rainbows (2007)"];
       [temp addObject:menuItem];
     }
-    dropDown.menuItems = [NSArray arrayWithArray:temp];
+    _dropDown.menuItems = [NSArray arrayWithArray:temp];
   }
-  [dropDown showMenuWithCompletion:^(ASJDropDownMenu *dropDownMenu, ASJDropDownMenuItem *menuItem, NSUInteger index)
+  
+  [_dropDown showMenuWithCompletion:^(ASJDropDownMenu *dropDownMenu, ASJDropDownMenuItem *menuItem, NSUInteger index)
    {
-     myTextField.text = menuItem.title;
+     _myTextField.text = menuItem.title;
      [dropDownMenu hideMenu];
    }];
 }
 
-- (NSArray *)menuItems {
+- (NSArray *)menuItems
+{
   return @[@"15 Step",
            @"Bodysnatchers",
            @"Nude",
