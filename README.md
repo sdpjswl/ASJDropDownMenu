@@ -38,6 +38,20 @@ anInstanceOfDropDownMenu.menuItems = @[itemWithSubtitle, anotherItemWithSubitle]
 
 ![alt tag](Screenshot.png)
 
+### Customization
+
+There are a few properties that you can use to customize the drop down menu:
+
+```objc
+@property (nullable, strong, nonatomic) UIColor *menuColor;
+@property (nullable, strong, nonatomic) UIColor *itemColor;
+@property (nullable, strong, nonatomic) UIFont *itemFont;
+@property (assign, nonatomic) CGFloat itemHeight;
+@property (assign, nonatomic) ASJDropDownMenuScrollIndicatorStyle indicatorStyle;
+```
+
+The indicator style uses the default `UIScrollView` indicator styles; default, black and white. If you want to set a custom color to yhe scroll indicator, you can look up [ASJColoredScrollIndicators](https://github.com/sudeepjaiswal/ASJColoredScrollIndicators).
+
 # To-do
 
 - Animation to open and close
