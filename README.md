@@ -50,7 +50,7 @@ There are a few properties that you can use to customize the drop down menu:
 @property (assign, nonatomic) ASJDropDownMenuScrollIndicatorStyle indicatorStyle;
 ```
 
-The indicator style uses the default `UIScrollView` indicator styles; default, black and white. If you want to set a custom color to yhe scroll indicator, you can look up [ASJColoredScrollIndicators](https://github.com/sudeepjaiswal/ASJColoredScrollIndicators).
+The indicator style uses the default `UIScrollView` indicator styles; default, black and white. If you want to set a custom color to the scroll indicator, you can look up [ASJColoredScrollIndicators](https://github.com/sudeepjaiswal/ASJColoredScrollIndicators).
 
 # To-do
 
