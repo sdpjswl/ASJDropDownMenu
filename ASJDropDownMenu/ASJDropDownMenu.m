@@ -41,25 +41,16 @@
 
 #pragma mark - Init methods
 
-- (instancetype)initWithView:(__kindof UIView *)view
+- (instancetype)initWithView:(__kindof UIView *)view menuItems:(nullable NSArray<ASJDropDownMenuItem *> *)menuItems
 {
   NSAssert(view, @"View must not be nil.");
   self = [super initWithFrame:CGRectZero];
   if (self) {
     _targetView = view;
+    _menuItems = menuItems;
     [self setup];
   }
   return self;
-}
-
-- (instancetype)initWithCoder:(NSCoder *)coder
-{
-  return [self initWithView:_targetView];
-}
-
-- (instancetype)initWithFrame:(CGRect)frame
-{
-  return [self initWithView:_targetView];
 }
 
 #pragma mark - Setup
@@ -73,7 +64,7 @@
 
 - (void)setupDefaults
 {
-  _menuColor = [[UIColor clearColor] colorWithAlphaComponent:0.8];
+  _menuColor = [[UIColor clearColor] colorWithAlphaComponent:0.8f];
   _itemColor = [UIColor whiteColor];
   _itemFont = [UIFont systemFontOfSize:14.0f];
   _itemHeight = 40.0f;

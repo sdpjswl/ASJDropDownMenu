@@ -39,53 +39,69 @@ typedef NS_ENUM(NSUInteger, ASJDropDownMenuScrollIndicatorStyle) {
 @interface ASJDropDownMenu : UIView
 
 /**
- *  Background color of the drop down menu
+ *  Background color of the drop down menu.
  */
 @property (nullable, strong, nonatomic) UIColor *menuColor;
 
 /**
- *  Text color of the menu items
+ *  Text color of the menu items.
  */
 @property (nullable, strong, nonatomic) UIColor *itemColor;
 
 /**
- *  Font of the menu items
+ *  Font of the menu items.
  */
 @property (nullable, strong, nonatomic) UIFont *itemFont;
 
 /**
- *  Height of individual menu items
+ *  Height of individual menu items.
  */
 @property (assign, nonatomic) CGFloat itemHeight;
 
 /**
- *  Type of scroll indicator for the scroll view
+ *  Type of scroll indicator for the scroll view.
  */
 @property (assign, nonatomic) ASJDropDownMenuScrollIndicatorStyle indicatorStyle;
 
 /**
- *  An array of strings to show in the drop down menu
+ *  An array of ASJDropDownMenuItems to show in the drop down menu.
  */
 @property (copy, nonatomic) NSArray<ASJDropDownMenuItem *> *menuItems;
 
 /**
- *  Use the designated initializer to construct a drop down menu
+ *  Use the designated initializer to construct a drop down menu.
  *
- *  @param view The view under which to show the drop down
+ *  @param view      The view under which to show the drop down.
+ *  @param menuItems An array of ASJDropDownMenuItems to show in the drop down menu.
  *
- *  @return Returns an instance of ASJDropDownMenu
+ *  @return Returns an instance of ASJDropDownMenu.
  */
-- (instancetype)initWithView:(__kindof UIView *)view NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithView:(__kindof UIView *)view menuItems:(nullable NSArray<ASJDropDownMenuItem *> *)menuItems NS_DESIGNATED_INITIALIZER;
 
 /**
- *  Show the drop down menu under the specified text field
+ *  Disallow usage of "init" to force the user to use the designated initializer.
+ */
+- (instancetype)init NS_UNAVAILABLE;
+
+/**
+ *  Disallow usage of "initWithCoder:" to force the user to use the designated initializer.
+ */
+- (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
+
+/**
+ *  Disallow usage of "initWithFrame:" to force the user to use the designated initializer.
+ */
+- (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;
+
+/**
+ *  Show the drop down menu under the specified view.
  *
- *  @param callback Returns the drop down menu object, the selection and the index at which it belongs in the array
+ *  @param callback Returns the drop down menu object, the selection and the index at which it belongs in the array.
  */
 - (void)showMenuWithCompletion:(nullable ASJDropDownMenuCompletionBlock)callback;
 
 /**
- *  Hides the drop down from the screen
+ *  Hides the drop down from the screen.
  */
 - (void)hideMenu;
 
