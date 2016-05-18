@@ -15,22 +15,24 @@ pod 'ASJDropDownMenu'
 Creating one is simple. The show method has a completion block which returns the selected item. You may hide the drop down there and then:
 
 ```objc
-ASJDropDownMenu *dropDownMenu = [[ASJDropDownMenu alloc] initWithView:aView];
-dropDownMenu.menuItems = anArrayOfASJDropDownMenuItems;
-[dropDown showMenuWithCompletion:^(ASJDropDownMenu *dropDownMenu, ASJDropDownMenuItem *menuItem, NSUInteger index) {
-  [dropDownMenu hideMenu];
-}];
+ASJDropDownMenu *dropDownMenu = [[ASJDropDownMenu alloc] initWithView:aView menuItems:anArrayOfASJDropDownMenuItems];
+[dropDown showMenuWithCompletion:^(ASJDropDownMenu *dropDownMenu, ASJDropDownMenuItem *menuItem, NSUInteger index)
+ {
+   [dropDownMenu hideMenu];
+ }];
 ```
 
 Whichever view you provide during instantiation, the dropdown will appear exactly below it. The menu items need to be of type `ASJDropDownMenuItem`s. Constructor methods are provided to generate them. Just attach an array of these to your drop down menu instance.
 
 ```objc
 ASJDropDownMenuItem *itemWithTitle = [ASJDropDownMenuItem itemWithTitle:@"a title"];
+ASJDropDownMenuItem *anotherItemWithTitle = [ASJDropDownMenuItem itemWithTitle:@"another title"];
 anInstanceOfDropDownMenu.menuItems = @[itemWithTitle, anotherItemWithTitle];
 ```
 
 ```objc
 ASJDropDownMenuItem *itemWithSubtitle = [ASJDropDownMenuItem itemWithTitle:@"a title" subtitle:@"a subtitle"];
+ASJDropDownMenuItem *anotherItemWithSubtitle = [ASJDropDownMenuItem itemWithTitle:@"another title" subtitle:@"another subtitle"];
 anInstanceOfDropDownMenu.menuItems = @[itemWithSubtitle, anotherItemWithSubitle];
 ```
 
