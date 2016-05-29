@@ -31,8 +31,8 @@ anInstanceOfDropDownMenu.menuItems = @[itemWithTitle, anotherItemWithTitle];
 ```
 
 ```objc
-ASJDropDownMenuItem *itemWithSubtitle = [ASJDropDownMenuItem itemWithTitle:@"a title" subtitle:@"a subtitle"];
-ASJDropDownMenuItem *anotherItemWithSubtitle = [ASJDropDownMenuItem itemWithTitle:@"another title" subtitle:@"another subtitle"];
+ASJDropDownMenuItem *itemWithSubtitle = [ASJDropDownMenuItem itemWithTitle:@"a title" subtitle:@"a subtitle" image:anImage];
+ASJDropDownMenuItem *anotherItemWithSubtitle = [ASJDropDownMenuItem itemWithTitle:@"another title" subtitle:@"another subtitle" image:anotherImage];
 anInstanceOfDropDownMenu.menuItems = @[itemWithSubtitle, anotherItemWithSubitle];
 ```
 
@@ -55,7 +55,7 @@ The indicator style uses the default `UIScrollView` indicator styles; default, b
 # To-do
 
 - Animation to open and close
-- Provision to add images
+- ~~Provision to add images~~
 - Provision to close on item selection
 - Option to open the drop down in up or down direction
 - Move the screen to accomodate the drawer when keyboard shows
