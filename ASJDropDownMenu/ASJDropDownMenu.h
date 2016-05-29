@@ -120,14 +120,19 @@ typedef NS_ENUM(NSUInteger, ASJDropDownMenuScrollIndicatorStyle) {
 @property (nullable, copy, nonatomic) NSString *subtitle;
 
 /**
+ *  Accompanying  image on the left of the main text. Optional
+ */
+@property (nullable, copy, nonatomic) UIImage *image;
+
+/**
  *  Convenience constructors. Will only show the main text.
  */
 + (ASJDropDownMenuItem *)itemWithTitle:(NSString *)title;
 
 /**
- *  Convenience constructor. 'subtitle' can be nil.
+ *  Convenience constructor. 'subtitle' and 'image' can be nil.
  */
-+ (ASJDropDownMenuItem *)itemWithTitle:(NSString *)title subtitle:(nullable NSString *)subtitle;
++ (ASJDropDownMenuItem *)itemWithTitle:(NSString *)title subtitle:(nullable NSString *)subtitle image:(nullable UIImage *)image;
 
 @end
 

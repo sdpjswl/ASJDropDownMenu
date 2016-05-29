@@ -109,6 +109,7 @@ static NSString *const kCellIdentifier = @"ASJDropDownCellIdentifier";
   
   ASJDropDownMenuItem *item = _menuItems[indexPath.row];
   BOOL hasSubtitle = item.subtitle.length ? YES : NO;
+  BOOL hasImage = item.image ? YES : NO;
   
   if (!cell)
   {
@@ -125,6 +126,9 @@ static NSString *const kCellIdentifier = @"ASJDropDownCellIdentifier";
   {
     cell.detailTextLabel.text = item.subtitle;
     cell.detailTextLabel.textColor = _itemColor;
+  }
+  if (hasImage) {
+    cell.imageView.image = item.image;
   }
   
   return cell;
@@ -230,11 +234,12 @@ static NSString *const kCellIdentifier = @"ASJDropDownCellIdentifier";
   return item;
 }
 
-+ (ASJDropDownMenuItem *)itemWithTitle:(NSString *)title subtitle:(NSString *)subtitle
++ (ASJDropDownMenuItem *)itemWithTitle:(NSString *)title subtitle:(NSString *)subtitle image:(nullable UIImage *)image
 {
   ASJDropDownMenuItem *item = [[ASJDropDownMenuItem alloc] init];
   item.title = title;
   item.subtitle = subtitle;
+  item.image = image;
   return item;
 }
 
