@@ -49,7 +49,7 @@
     for (NSString *item in self.menuItems)
     {
       NSInteger idx = [self.menuItems indexOfObject:item];
-      ASJDropDownMenuItem *menuItem = [ASJDropDownMenuItem itemWithTitle:self.menuItems[idx] subtitle:@"Radiohead - In Rainbows (2007)"];
+      ASJDropDownMenuItem *menuItem = [ASJDropDownMenuItem itemWithTitle:self.menuItems[idx] subtitle:@"Radiohead - In Rainbows (2007)" image:[UIImage imageNamed:@"in_rainbows"]];
       [temp addObject:menuItem];
     }
     
