@@ -6,7 +6,7 @@ iOS doesn't have a drop down menu by default. Developers are supposed to use the
 
 CocoaPods is the preferred way to install this library. Add this command to your `Podfile`:
 
-```
+```ruby
 pod 'ASJDropDownMenu'
 ```
 
@@ -54,11 +54,11 @@ The indicator style uses the default `UIScrollView` indicator styles; default, b
 
 # To-do
 
-- Animation to open and close
-- ~~Provision to add images~~
-- Provision to close on item selection
-- Option to open the drop down in up or down direction
-- Move the screen to accomodate the drawer when keyboard shows
+- Animation to open and close.
+- ~~Provision to add images.~~
+- Provision to close on item selection.
+- Option to open the drop down in up or down direction.
+- Move the screen to accomodate the drawer when keyboard shows.
 
 # License
 
