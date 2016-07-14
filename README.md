@@ -47,6 +47,7 @@ There are a few properties that you can use to customize the drop down menu:
 @property (nullable, strong, nonatomic) UIColor *itemColor;
 @property (nullable, strong, nonatomic) UIFont *itemFont;
 @property (assign, nonatomic) CGFloat itemHeight;
+@property (assign, nonatomic) BOOL hidesOnSelection;
 @property (assign, nonatomic) ASJDropDownMenuScrollIndicatorStyle indicatorStyle;
 ```
 
@@ -56,7 +57,7 @@ The indicator style uses the default `UIScrollView` indicator styles; default, b
 
 - Animation to open and close.
 - ~~Provision to add images.~~
-- Provision to close on item selection.
+- ~~Provision to close on item selection.~~
 - Option to open the drop down in up or down direction.
 - Move the screen to accomodate the drawer when keyboard shows.
 

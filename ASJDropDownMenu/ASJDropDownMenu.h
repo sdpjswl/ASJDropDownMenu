@@ -59,6 +59,11 @@ typedef NS_ENUM(NSUInteger, ASJDropDownMenuScrollIndicatorStyle) {
 @property (assign, nonatomic) CGFloat itemHeight;
 
 /**
+ *  Hide the drop down menu when an item is selected.
+ */
+@property (assign, nonatomic) BOOL hidesOnSelection;
+
+/**
  *  Type of scroll indicator for the scroll view. The available types are default, black and white. If you want to have more control over the indicator color, you can refer ASJColoredScrollIndicators: https://github.com/sudeepjaiswal/ASJColoredScrollIndicators
  */
 @property (assign, nonatomic) ASJDropDownMenuScrollIndicatorStyle indicatorStyle;

@@ -57,13 +57,13 @@
     _dropDown.menuColor = [UIColor colorWithWhite:0.2f alpha:1.0f];
     _dropDown.itemColor = [UIColor orangeColor];
     _dropDown.itemHeight = 50.0f;
+    _dropDown.hidesOnSelection = YES;
     _dropDown.indicatorStyle = ASJDropDownMenuScrollIndicatorStyleWhite;
   }
   
   [_dropDown showMenuWithCompletion:^(ASJDropDownMenu *dropDownMenu, ASJDropDownMenuItem *menuItem, NSUInteger index)
    {
      _myTextField.text = menuItem.title;
-     [dropDownMenu hideMenu];
    }];
 }
 

@@ -138,6 +138,10 @@ static NSString *const kCellIdentifier = @"ASJDropDownCellIdentifier";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+  if (_hidesOnSelection == YES) {
+    [self hideMenu];
+  }
+  
   if (_callback) {
     _callback(self, _menuItems[indexPath.row], indexPath.row);
   }
