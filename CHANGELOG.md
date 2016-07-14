@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0](https://github.com/sudeepjaiswal/ASJDropDownMenu/releases/tag/1.0)
+Released on Thursday, 14 Jul, 2016.
+
+#### Added
+* Added property 'hidesOnSelection' that hides drop down menu when an item is selected.
+
 ## [0.3](https://github.com/sudeepjaiswal/ASJDropDownMenu/releases/tag/0.3)
 Released on Sunday, 29 May, 2016.
 
