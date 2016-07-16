@@ -44,21 +44,52 @@ There are a few properties that you can use to customize the drop down menu:
 
 ```objc
 @property (nullable, strong, nonatomic) UIColor *menuColor;
+```
+
+Sets the menu's background color.
+
+```objc
 @property (nullable, strong, nonatomic) UIColor *itemColor;
+```
+
+Sets the text color of the menu items.
+
+```objc
 @property (nullable, strong, nonatomic) UIFont *itemFont;
+```
+
+Sets the menu items' font.
+
+```objc
 @property (assign, nonatomic) CGFloat itemHeight;
+```
+
+Sets the height each menu item takes.
+
+```objc
 @property (assign, nonatomic) BOOL hidesOnSelection;
+```
+
+If set `YES`, the menu will hide when an item is tapped.
+
+```objc
+@property (assign, nonatomic) ASJDropDownMenuDirection direction;
+```
+
+You can show the menu below or above the specified view. Shows below by default.
+
+```
 @property (assign, nonatomic) ASJDropDownMenuScrollIndicatorStyle indicatorStyle;
 ```
 
-The indicator style uses the default `UIScrollView` indicator styles; default, black and white. If you want to set a custom color to the scroll indicator, you can look up [ASJColoredScrollIndicators](https://github.com/sudeepjaiswal/ASJColoredScrollIndicators).
+You can set the scroll indicator styles default, black or white, which are the default `UIScrollView` indicator styles. If you want to set a custom color to the scroll indicator, you can look up [ASJColoredScrollIndicators](https://github.com/sudeepjaiswal/ASJColoredScrollIndicators).
 
 # To-do
 
 - Animation to open and close.
 - ~~Provision to add images.~~
 - ~~Provision to close on item selection.~~
-- Option to open the drop down in up or down direction.
+- ~~Option to open the drop down in up or down direction.~~
 - Move the screen to accomodate the drawer when keyboard shows.
 
 # License
