@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.1](https://github.com/sudeepjaiswal/ASJDropDownMenu/releases/tag/1.1)
+Released on Saturday, 16 Jul, 2016.
+
+#### Added
+* Added property 'direction' that allows showing menu below or above the specified view.
+
 ## [1.0](https://github.com/sudeepjaiswal/ASJDropDownMenu/releases/tag/1.0)
 Released on Thursday, 14 Jul, 2016.
 
