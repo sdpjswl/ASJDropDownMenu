@@ -30,10 +30,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef void (^ASJDropDownMenuCompletionBlock)(ASJDropDownMenu *dropDownMenu, ASJDropDownMenuItem *menuItem, NSUInteger index);
 
-typedef NS_ENUM(NSUInteger, ASJDropDownMenuScrollIndicatorStyle) {
+typedef NS_ENUM(NSUInteger, ASJDropDownMenuScrollIndicatorStyle)
+{
   ASJDropDownMenuScrollIndicatorStyleDefault,
   ASJDropDownMenuScrollIndicatorStyleBlack,
   ASJDropDownMenuScrollIndicatorStyleWhite
+};
+
+typedef NS_ENUM(NSInteger, ASJDropDownMenuDirection)
+{
+  ASJDropDownMenuDirectionDown,
+  ASJDropDownMenuDirectionUp
 };
 
 @interface ASJDropDownMenu : UIView
@@ -62,6 +69,11 @@ typedef NS_ENUM(NSUInteger, ASJDropDownMenuScrollIndicatorStyle) {
  *  Hide the drop down menu when an item is selected.
  */
 @property (assign, nonatomic) BOOL hidesOnSelection;
+
+/**
+ *  Show the drop down menu below or above the specified view.
+ */
+@property (assign, nonatomic) ASJDropDownMenuDirection direction;
 
 /**
  *  Type of scroll indicator for the scroll view. The available types are default, black and white. If you want to have more control over the indicator color, you can refer ASJColoredScrollIndicators: https://github.com/sudeepjaiswal/ASJColoredScrollIndicators

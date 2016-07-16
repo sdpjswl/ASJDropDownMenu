@@ -208,11 +208,19 @@ static NSString *const kCellIdentifier = @"ASJDropDownCellIdentifier";
 {
   _callback = callback;
   CGFloat x = _targetView.frame.origin.x;
-  CGFloat y = _targetView.frame.origin.y + _targetView.frame.size.height;
   CGFloat width = _targetView.frame.size.width;
   CGFloat height = _itemHeight * _menuItems.count;
+  
   if (_menuItems.count > 5) {
     height = _itemHeight * 5;
+  }
+  
+  CGFloat y = 0.0f;
+  if (_direction == ASJDropDownMenuDirectionDown) {
+    y = _targetView.frame.origin.y + _targetView.frame.size.height;
+  }
+  else {
+    y = _targetView.frame.origin.y - height;
   }
   
   self.frame = CGRectMake(x, y, width, height);
