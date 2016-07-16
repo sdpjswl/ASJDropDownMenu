@@ -58,6 +58,7 @@
     _dropDown.itemColor = [UIColor orangeColor];
     _dropDown.itemHeight = 50.0f;
     _dropDown.hidesOnSelection = YES;
+    _dropDown.direction = ASJDropDownMenuDirectionUp;
     _dropDown.indicatorStyle = ASJDropDownMenuScrollIndicatorStyleWhite;
   }
   
