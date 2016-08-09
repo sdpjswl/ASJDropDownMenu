@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type something..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6W7-ki-0c2">
-                                <rect key="frame" x="135" y="285" width="330" height="30"/>
+                                <rect key="frame" x="30" y="35" width="540" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="265" id="LJK-aM-Z8F"/>
                                 </constraints>
@@ -35,13 +35,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="6W7-ki-0c2" secondAttribute="centerX" id="2Uj-zG-LYB"/>
-                            <constraint firstItem="6W7-ki-0c2" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" multiplier="0.55" id="7Ij-vk-WfS"/>
+                            <constraint firstItem="6W7-ki-0c2" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" multiplier="0.9" id="7Ij-vk-WfS"/>
                             <constraint firstItem="6W7-ki-0c2" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="25" id="G21-X5-vl1"/>
+                            <constraint firstItem="6W7-ki-0c2" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="15" id="dZK-Wh-efB"/>
                             <constraint firstItem="6W7-ki-0c2" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="ju1-ar-H0h"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="G21-X5-vl1"/>
+                                <exclude reference="ju1-ar-H0h"/>
                             </mask>
                         </variation>
                     </view>
