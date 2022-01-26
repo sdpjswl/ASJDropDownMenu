@@ -78,11 +78,11 @@ If set `YES`, the menu will hide when an item is tapped.
 
 You can show the menu below or above the specified view. Shows below by default.
 
-```
+```objc
 @property (assign, nonatomic) ASJDropDownMenuScrollIndicatorStyle indicatorStyle;
 ```
 
-You can set the scroll indicator styles default, black or white, which are the default `UIScrollView` indicator styles. If you want to set a custom color to the scroll indicator, you can look up [ASJColoredScrollIndicators](https://github.com/sudeepjaiswal/ASJColoredScrollIndicators).
+You can set the scroll indicator styles default, black or white, which are the default `UIScrollView` indicator styles. If you want to set a custom color to the scroll indicator, you can look up [ASJColoredScrollIndicators](https://github.com/sdpjswl/ASJColoredScrollIndicators).
 
 # To-do
 
