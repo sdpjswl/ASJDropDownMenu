@@ -68,6 +68,7 @@
     _itemColor = [UIColor whiteColor];
     _itemFont = [UIFont systemFontOfSize:14.0f];
     _itemHeight = 40.0f;
+    _animationDuration = 0.4f;
     _indicatorStyle = ASJDropDownMenuScrollIndicatorStyleDefault;
 }
 
@@ -225,12 +226,27 @@ static NSString *const kCellIdentifier = @"ASJDropDownCellIdentifier";
     
     self.frame = CGRectMake(x, y, width, height);
     [_targetView.superview addSubview:self];
+    
+    // animation
+    self.alpha = 0.0f;
+    [UIView animateWithDuration:_animationDuration delay:0.0f options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^
+     {
+        self.alpha = 1.0f;
+    } completion:nil];
 }
 
 - (void)hideMenu
 {
-    [self removeFromSuperview];
-    [_menuTableView deselectRowAtIndexPath:_menuTableView.indexPathForSelectedRow animated:NO];
+    [UIView animateWithDuration:_animationDuration delay:0.0f options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^
+     {
+        self.alpha = 0.0f;
+    } completion:^(BOOL finished)
+     {
+        [self removeFromSuperview];
+        [self->_menuTableView deselectRowAtIndexPath:self->_menuTableView.indexPathForSelectedRow animated:NO];
+    }];
 }
 
 @end

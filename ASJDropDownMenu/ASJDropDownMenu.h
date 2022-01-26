@@ -66,6 +66,11 @@ typedef NS_ENUM(NSInteger, ASJDropDownMenuDirection)
 @property (assign, nonatomic) CGFloat itemHeight;
 
 /**
+ *  The time (in seconds) taken to hide or show the menu. Defaults to 0.4.
+ */
+@property (assign, nonatomic) CGFloat animationDuration;
+
+/**
  *  Hide the drop down menu when an item is selected.
  */
 @property (assign, nonatomic) BOOL hidesOnSelection;
