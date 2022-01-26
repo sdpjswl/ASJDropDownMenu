@@ -3,6 +3,9 @@
 ## [1.2](https://github.com/sdpjswl/ASJDropDownMenu/releases/tag/1.2)
 Released on Wednesday, 26 Jan, 2022.
 
+#### Added
+* Menu now shows and hides with animation; customize using `animationDuration` property.
+
 #### Updated
 * Podspec with updated author, url and platform.
 

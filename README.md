@@ -67,6 +67,12 @@ Sets the menu items' font.
 Sets the height each menu item takes.
 
 ```objc
+@property (assign, nonatomic) CGFloat animationDuration;
+```
+
+Sets the time taken (in seconds) to hide or show the menu. Defaults to 0.4.
+
+```objc
 @property (assign, nonatomic) BOOL hidesOnSelection;
 ```
 
@@ -86,7 +92,7 @@ You can set the scroll indicator styles default, black or white, which are the d
 
 # To-do
 
-- Animation to open and close.
+- ~~Animation to open and close.~~
 - ~~Provision to add images.~~
 - ~~Provision to close on item selection.~~
 - ~~Option to open the drop down in up or down direction.~~
