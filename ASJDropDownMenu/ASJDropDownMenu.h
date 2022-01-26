@@ -32,15 +32,15 @@ typedef void (^ASJDropDownMenuCompletionBlock)(ASJDropDownMenu *dropDownMenu, AS
 
 typedef NS_ENUM(NSUInteger, ASJDropDownMenuScrollIndicatorStyle)
 {
-  ASJDropDownMenuScrollIndicatorStyleDefault,
-  ASJDropDownMenuScrollIndicatorStyleBlack,
-  ASJDropDownMenuScrollIndicatorStyleWhite
+    ASJDropDownMenuScrollIndicatorStyleDefault,
+    ASJDropDownMenuScrollIndicatorStyleBlack,
+    ASJDropDownMenuScrollIndicatorStyleWhite
 };
 
 typedef NS_ENUM(NSInteger, ASJDropDownMenuDirection)
 {
-  ASJDropDownMenuDirectionDown,
-  ASJDropDownMenuDirectionUp
+    ASJDropDownMenuDirectionDown,
+    ASJDropDownMenuDirectionUp
 };
 
 @interface ASJDropDownMenu : UIView
