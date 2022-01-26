@@ -47,7 +47,7 @@
     self = [super initWithFrame:CGRectZero];
     if (self) {
         _targetView = view;
-        _menuItems = menuItems;
+        self.menuItems = menuItems;
         [self setup];
     }
     return self;
@@ -179,15 +179,10 @@ static NSString *const kCellIdentifier = @"ASJDropDownCellIdentifier";
     [self reloadTable];
 }
 
-- (void)setMenuItems:(NSArray *)menuItems
+- (void)setMenuItems:(NSArray<ASJDropDownMenuItem *> *)menuItems
 {
     NSAssert(menuItems.count, @"You must provide at least one ASJDropDownMenuItem.");
     
-    for (id object in menuItems)
-    {
-        BOOL success = [object isMemberOfClass:[ASJDropDownMenuItem class]];
-        NSAssert(success, @"Items must be of kind ASJDropDownMenuItem");
-    }
     _menuItems = menuItems;
     [self reloadTable];
 }
