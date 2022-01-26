@@ -56,6 +56,7 @@
         _dropDown.menuColor = [UIColor colorWithWhite:0.2f alpha:1.0f];
         _dropDown.itemColor = [UIColor orangeColor];
         _dropDown.itemHeight = 50.0f;
+        _dropDown.animationDuration = 0.2f;
         _dropDown.hidesOnSelection = YES;
         _dropDown.direction = ASJDropDownMenuDirectionDown;
         _dropDown.indicatorStyle = ASJDropDownMenuScrollIndicatorStyleWhite;
