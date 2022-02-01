@@ -81,7 +81,7 @@ typedef NS_ENUM(NSInteger, ASJDropDownMenuDirection)
 @property (assign, nonatomic) ASJDropDownMenuDirection direction;
 
 /**
- *  Type of scroll indicator for the scroll view. The available types are default, black and white. If you want to have more control over the indicator color, you can refer ASJColoredScrollIndicators: https://github.com/sudeepjaiswal/ASJColoredScrollIndicators
+ *  Type of scroll indicator for the scroll view. The available types are default, black and white. If you want to have more control over the indicator color, you can refer ASJColoredScrollIndicators: https://github.com/sdpjswl/ASJColoredScrollIndicators
  */
 @property (assign, nonatomic) ASJDropDownMenuScrollIndicatorStyle indicatorStyle;
 
